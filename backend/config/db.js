@@ -8,14 +8,13 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   ssl: {
-    rejectUnauthorized: false // <-- Esto permite conectar sin el ca.pem en Render
-  },
+    rejectUnauthorized: false
+  }, // <-- AQUÍ FALTABA LA COMA
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
 });
 
-// Prueba de conexión
 pool.getConnection()
   .then(conn => {
     console.log('✅ Conectado exitosamente a MySQL en Aiven');
