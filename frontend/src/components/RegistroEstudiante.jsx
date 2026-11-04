@@ -48,17 +48,19 @@ export default function RegistroEstudiante() {
         <h1 style={{ marginBottom: '1.5rem', fontSize: '2.5rem', color: '#E91E63' }}>🎒 Registro</h1>
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           
-          <input type="text" placeholder="Nombre del niño" required 
-            value={form.nombre} onChange={e => setForm({...form, nombre: e.target.value})}
-            style={{ padding: '15px', fontSize: '18px', borderRadius: '10px', border: 'none', backgroundColor: '#333', color: 'white' }}/>
+          // Para el input de texto
+<input type="text" placeholder="Nombre del niño" required 
+  value={form.nombre} onChange={e => setForm({...form, nombre: e.target.value})}
+  style={{ padding: '15px', fontSize: '18px', borderRadius: '10px', border: '2px solid #ccc', backgroundColor: '#fff', color: '#333' }}/>
           
-          <input type="number" placeholder="Edad" required 
-            value={form.edad} onChange={e => setForm({...form, edad: e.target.value})}
-            style={{ padding: '15px', fontSize: '18px', borderRadius: '10px', border: 'none', backgroundColor: '#333', color: 'white' }}/>
+          // Para el input de edad
+<input type="number" placeholder="Edad" required 
+  value={form.edad} onChange={e => setForm({...form, edad: e.target.value})}
+  style={{ padding: '15px', fontSize: '18px', borderRadius: '10px', border: '2px solid #ccc', backgroundColor: '#fff', color: '#333' }}/>
           
           {/* 4. Este select ahora actualiza "juego" en lugar de "nivel" */}
           <select value={form.juego} onChange={e => setForm({...form, juego: e.target.value})}
-            style={{ padding: '15px', fontSize: '18px', borderRadius: '10px', border: 'none', backgroundColor: '#333', color: 'white', cursor: 'pointer' }}>
+  style={{ padding: '15px', fontSize: '18px', borderRadius: '10px', border: '2px solid #ccc', backgroundColor: '#fff', color: '#333', cursor: 'pointer' }}>
             <option value="memoria">🧠 Juego de Memoria</option>
             <option value="figuras">📐 Figuras Geométricas</option>
             <option value="espacial">📦 Adentro / Afuera</option>
