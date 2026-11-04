@@ -1,6 +1,4 @@
 const mysql = require('mysql2/promise');
-const fs = require('fs');
-const path = require('path');
 require('dotenv').config();
 
 const pool = mysql.createPool({
@@ -10,18 +8,19 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   ssl: {
-  rejectUnauthorized: false
-}
+    rejectUnauthorized: false // <-- Esto permite conectar sin el ca.pem en Render
+  },
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
 });
 
+// Prueba de conexión
 pool.getConnection()
   .then(conn => {
-    console.log(' Conectado exitosamente a MySQL en Aiven');
+    console.log('✅ Conectado exitosamente a MySQL en Aiven');
     conn.release();
   })
-  .catch(err => console.error(' Error de conexión a la BD:', err.message));
+  .catch(err => console.error('❌ Error de conexión a la BD:', err.message));
 
 module.exports = pool;
