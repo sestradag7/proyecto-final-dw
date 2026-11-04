@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://proyecto-final-dw.onrender.com/api';
+const API_URL = 'https://proyecto-final-dw-ie4h.onrender.com/api';
 
 export const api = axios.create({ baseURL: API_URL });
 
