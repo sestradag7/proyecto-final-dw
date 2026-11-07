@@ -109,3 +109,56 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+/* --- CLASES RESPONSIVAS PARA LOS JUEGOS --- */
+
+/* Títulos que se adaptan al tamaño de la pantalla */
+.titulo-juego {
+  font-size: clamp(1.8rem, 5vw, 3.5rem) !important;
+  margin-bottom: 10px !important;
+  text-align: center;
+}
+
+/* Textos de rondas y puntajes */
+.texto-ronda {
+  font-size: clamp(1rem, 3vw, 1.5rem) !important;
+  margin-bottom: 20px !important;
+  text-align: center;
+}
+
+/* Tablero de memoria adaptativo (4 columnas en PC, 4 en celular pero más chicas) */
+.grid-memoria {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Se adapta al ancho */
+  gap: clamp(5px, 2vw, 15px);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Botones de opciones (Matemáticas, Figuras) */
+.grid-opciones {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(10px, 3vw, 20px);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Pizarra verde adaptativa */
+.pizarra-verde {
+  padding: clamp(15px, 4vw, 30px) !important;
+  max-width: 95% !important;
+  box-sizing: border-box;
+}
+
+/* Texto grande de la operación matemática */
+.operacion-matematica {
+  font-size: clamp(2.5rem, 10vw, 5rem) !important;
+}
+
+/* Botones de opciones para que el texto no se desborde */
+.boton-opcion {
+  font-size: clamp(1.2rem, 5vw, 2.5rem) !important;
+  padding: clamp(10px, 3vw, 20px) !important;
+}

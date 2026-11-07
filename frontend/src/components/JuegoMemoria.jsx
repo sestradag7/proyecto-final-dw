@@ -57,36 +57,27 @@ export default function JuegoMemoria({ estudianteId }) {
 
   return (
     <div style={{ 
-      textAlign: 'center', padding: '2rem', fontFamily: '"Comic Sans MS", "Chalkboard SE", sans-serif', 
-      // Fondo atenuado a 0.75 para que se entienda mejor el juego
+      textAlign: 'center', padding: '1rem', fontFamily: '"Comic Sans MS", "Chalkboard SE", sans-serif', 
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${fondoMemoria})`,
       backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', 
       color: '#fff', textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
       display: 'flex', flexDirection: 'column', alignItems: 'center'
     }}>
+      {/* Título Responsivo */}
+      <h1 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', margin: '0 0 10px 0' }}>🧠 Juego de Memoria</h1>
+      <p style={{ fontSize: 'clamp(1rem, 4vw, 1.5rem)', fontWeight: 'bold', marginTop: '0', marginBottom: '20px' }}>Movimientos: {movimientos}</p>
       
-      <h1 style={{ fontSize: '3.5rem', color: '#FFF', margin: '0 0 20px 0' }}>🧠 Juego de Memoria</h1>
-      
-      {/* Margen inferior arreglado aquí */}
-      <p style={{ fontSize: '1.5rem', fontWeight: 'bold', marginTop: '0', marginBottom: '30px' }}>
-        
-      </p>
-
-      {/* Margen inferior arreglado aquí */}
-      <p style={{ fontSize: '1.5rem', fontWeight: 'bold', marginTop: '0', marginBottom: '30px' }}>
-        Movimientos: {movimientos}
-      </p>
-      
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 110px)', gap: '15px', justifyContent: 'center' }}>
+      {/* Tablero Responsivo */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'clamp(5px, 2vw, 15px)', width: '100%', maxWidth: '500px' }}>
         {cartas.map((c, i) => {
           const visible = c.volteada || parejas.includes(c.emoji);
           return (
             <div key={c.uniqueId} onClick={() => voltear(i)} style={{
-              width: '110px', height: '110px', backgroundColor: visible ? '#FFF' : '#0bff07',
+              aspectRatio: '1/1', backgroundColor: visible ? '#FFF' : '#0bff07',
               border: visible ? '4px solid #4CAF50' : '4px solid #1aff00', 
-              borderRadius: '20px', display: 'flex', alignItems: 'center', 
-              justifyContent: 'center', fontSize: '3.5rem', cursor: 'pointer',
-              boxShadow: '0 6px 0 rgba(0,0,0,0.3)', textShadow: 'none'
+              borderRadius: 'clamp(10px, 3vw, 20px)', display: 'flex', alignItems: 'center', 
+              justifyContent: 'center', fontSize: 'clamp(2rem, 8vw, 3.5rem)', cursor: 'pointer',
+              boxShadow: '0 4px 0 rgba(0,0,0,0.3)', textShadow: 'none'
             }}>
               {visible ? c.emoji : '❓'}
             </div>
@@ -95,15 +86,15 @@ export default function JuegoMemoria({ estudianteId }) {
       </div>
       
       {terminado && (
-        <div style={{ marginTop: '2rem', backgroundColor: 'rgba(255,255,255,0.95)', display: 'inline-block', padding: '20px', borderRadius: '15px', color: '#333', textShadow: 'none' }}>
-          <h2 style={{ color: '#4CAF50', fontSize: '2rem', margin: '0 0 15px 0' }}>¡Felicidades! 🎉</h2>
-          <button onClick={iniciarJuego} style={{ padding: '15px 30px', fontSize: '20px', cursor: 'pointer', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '10px', fontWeight: 'bold' }}>
+        <div style={{ marginTop: '20px', backgroundColor: 'rgba(255,255,255,0.95)', display: 'inline-block', padding: '20px', borderRadius: '15px', color: '#333', textShadow: 'none', width: '90%', maxWidth: '400px' }}>
+          <h2 style={{ color: '#4CAF50', fontSize: 'clamp(1.5rem, 5vw, 2rem)', margin: '0 0 15px 0' }}>¡Felicidades! 🎉</h2>
+          <button onClick={iniciarJuego} style={{ padding: '10px 20px', fontSize: 'clamp(1rem, 4vw, 1.2rem)', cursor: 'pointer', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '10px', fontWeight: 'bold', width: '100%' }}>
             Jugar de nuevo
           </button>
         </div>
       )}
 
-      <p style={{ marginTop: 'auto', paddingTop: '2rem', fontSize: '1.2rem', fontWeight: 'bold' }}>Creado por Manolo Estrada</p>
+      <p style={{ marginTop: 'auto', paddingTop: '20px', fontSize: 'clamp(0.8rem, 3vw, 1.2rem)', fontWeight: 'bold' }}>Creado por Manolo Estrada</p>
     </div>
   );
 }
